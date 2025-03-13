@@ -37,7 +37,7 @@ body {
 }
 
 section {
-    padding: 80px 0;
+    padding:  0;
 }
 
 .section-title {
@@ -245,6 +245,8 @@ header .container {
     color: white;
     padding: 80px 0 60px;
     overflow: hidden;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .about-skills .overlay {
@@ -267,6 +269,7 @@ header .container {
 
 .section-part {
     margin-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .section-part:last-child {
@@ -455,6 +458,8 @@ header .container {
 
 
 
+
+
 /* Responsive Adjustments */
 @media (max-width: 992px) {
     .about-content {
@@ -489,12 +494,15 @@ header .container {
     }
 }
 
+
+
 /* Certificates Section */
 .certificates {
     position: relative;
-    padding: 80px 0 0 0;
     color: white;
-    margin-bottom: 0;
+    padding-top: 0;
+    margin-top: 0; /* Ensure no margin at the top */
+    margin-bottom: 0; /* Ensure no margin at the bottom */
 }
 
 .certificate-overlay {
@@ -533,6 +541,20 @@ header .container {
     padding-bottom: 20px; /* Add some padding to avoid cutting off content */
 }
 
+.certificates-scroll-container::-webkit-scrollbar {
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for scrollbar track */
+}
+
+.certificates-scroll-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); /* Use the primary color for the scrollbar thumb */
+    border-radius: 4px;
+}
+
+.certificates-scroll-container::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for scrollbar track */
+}
+
 .certificates-container {
     display: inline-flex;
     gap: 30px;
@@ -548,7 +570,6 @@ header .container {
     display: flex;
     flex-direction: column;
 }
-
 .certificate-preview {
     height: 180px;
     overflow: hidden;
@@ -635,12 +656,19 @@ header .container {
 .projects .section-title {
     color: white;
 }
+
+.projects-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 20px; /* Space for scrollbar */
+}
 .projects-grid {
-    display: grid;
+    display: inline-flex;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
+    gap: 20px;
     position: relative;
     z-index: 2;
+    padding: 10px 0;
 }
 .project-card {
     background-color: rgba(255, 255, 255, 0.1);
@@ -650,6 +678,8 @@ header .container {
     box-shadow: var(--shadow);
     transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    flex: 0 0 auto;
+    width: 300px; //adjust as required
 }
 .project-card:hover {
     transform: translateY(-10px);
@@ -1003,4 +1033,38 @@ footer {
 .hero-content .highlight {
     color: #ffffff; 
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Example hover effect for buttons */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Example hover effect for project cards */
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certificates-container {
+        flex-direction: column;
+    }
+
+    .certificate-card {
+        width: 100%;
+    }
 }
