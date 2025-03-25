@@ -537,13 +537,14 @@ header .container {
 
 
 
-/* Certificates Section */
+/* Certificates Section Styling */
 .certificates {
     position: relative;
     color: white;
     padding-top: 0;
-    margin-top: 0; /* Ensure no margin at the top */
-    margin-bottom: 0; /* Ensure no margin at the bottom */
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden; /* Prevent horizontal overflow of entire section */
 }
 
 .certificate-overlay {
@@ -569,48 +570,59 @@ header .container {
     position: relative;
     z-index: 2;
     padding-bottom: 80px;
+    max-width: 1200px; /* Limit container width */
+    margin: 0 auto; /* Center the container */
+    overflow: hidden; /* Prevent horizontal overflow */
 }
 
 .certificates .section-title {
     color: white;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 .certificates-scroll-container {
-     
-    white-space: nowrap;
-    padding-bottom: 20px; /* Add some padding to avoid cutting off content */
+    width: 100%; /* Ensure it fits within the container */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Prevent vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .certificates-scroll-container::-webkit-scrollbar {
     height: 8px;
-    background-color: rgba(255, 255, 255, 0.1); /* Light background for scrollbar track */
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .certificates-scroll-container::-webkit-scrollbar-thumb {
-    background-color: var(--primary-color); /* Use the primary color for the scrollbar thumb */
+    background-color: var(--primary-color);
     border-radius: 4px;
 }
 
-.certificates-scroll-container::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.1); /* Light background for scrollbar track */
-}
-
 .certificates-container {
-    display: inline-flex;
+    display: flex;
     gap: 30px;
+    width: max-content; /* Expand to fit all certificates */
+    padding: 20px 0; /* Add some vertical padding */
 }
 
 .certificate-card {
     flex: 0 0 auto;
     width: 300px;
+    min-width: 300px; /* Ensure consistent width */
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
 }
+
+
+.certificate-card:hover {
+    transform: scale(1.03);
+}
+
 .certificate-preview {
     height: 180px;
     overflow: hidden;
@@ -630,15 +642,10 @@ header .container {
     transform: scale(1.05);
 }
 
-.certificate-preview iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
 .certificate-details {
     padding: 20px;
     white-space: normal;
+    flex-grow: 1;
 }
 
 .certificate-details h3 {
@@ -668,19 +675,16 @@ header .container {
     transform: translateY(-2px);
 }
 
-/* Fix for white space between sections */
-.certificates + section {
-    margin-top: 0;
-    padding-top: 0;
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
     .certificates-container {
         flex-direction: column;
+        width: 100%;
     }
     
     .certificate-card {
         width: 100%;
+        min-width: auto;
     }
 }
 
